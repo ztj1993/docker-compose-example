@@ -1,0 +1,19 @@
+version: "3"
+services:
+  user:
+    image: ztj1993/mysql-tools:0.0.1
+    command: adduser % ${NEW_DB_USER} ${NEW_DB_PASSWORD}
+    network_mode: custom
+    environment:
+      - MYSQL_HOST=${MYSQL_HOST:-mysql}
+      - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD:-123456}
+
+  db:
+    image: ztj1993/mysql-tools:0.0.1
+    command: create database ${NEW_DB_USER}_${NEW_DB_NAME}
+    network_mode: custom
+    environment:
+      - MYSQL_HOST=${MYSQL_HOST:-mysql}
+      - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD:-123456}
+    depends_on:
+      - user
