@@ -10,7 +10,7 @@ services:
       --binlog-format=ROW
       --server_id=1
     hostname: ${MYSQL_HOSTNAME:-mysql}
-    container_name: ${MYSQL_CONTAINER_NAME:-}
+    container_name: ${MYSQL_CONTAINER_NAME:-mysql}
     network_mode: custom
     restart: always
     environment:
