@@ -1,0 +1,24 @@
+version: "3"
+services:
+
+  es:
+    image: elasticsearch:${ES_VERSION:-7.8.0}
+    hostname: ${ES_HOSTNAME:-es}
+    container_name: ${ES_CONTAINER_NAME:-es}
+    network_mode: custom
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - es:/usr/share/elasticsearch/data:rw
+    expose:
+      - 9200/tcp
+      - 9300/tcp
+    ports:
+      - 9200/tcp
+      - 9300/tcp
+
+volumes:
+  es:
+    driver: local
