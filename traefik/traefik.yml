@@ -1,0 +1,49 @@
+version: "3"
+services:
+
+  traefik:
+    image: traefik:v2.2
+    hostname: ${TRAEFIK_HOSTNAME:-traefik}
+    container_name: ${TRAEFIK_CONTAINER_NAME:-traefik}
+    network_mode: custom
+    restart: always
+    environment:
+      - TRAEFIK_LOG=true
+      - TRAEFIK_LOG_LEVEL=INFO
+      - TRAEFIK_API=true
+      - TRAEFIK_API_INSECURE=true
+      - TRAEFIK_PROVIDERS_DOCKER=true
+      - TRAEFIK_PROVIDERS_DOCKER_NETWORK=custom
+      - TRAEFIK_GLOBAL_SENDANONYMOUSUSAGE=false
+      - TRAEFIK_PROVIDERS_DOCKER_EXPOSEDBYDEFAULT=false
+      - TRAEFIK_ENTRYPOINTS_HTTP=true
+      - TRAEFIK_ENTRYPOINTS_HTTP_ADDRESS=:80
+      - TRAEFIK_ENTRYPOINTS_HTTPS=true
+      - TRAEFIK_ENTRYPOINTS_HTTPS_ADDRESS=:443
+      - TRAEFIK_CERTIFICATESRESOLVERS_WEB=true
+      - TRAEFIK_CERTIFICATESRESOLVERS_WEB_ACME_EMAIL=ztj1993@gmail.com
+      - TRAEFIK_CERTIFICATESRESOLVERS_WEB_ACME_HTTPCHALLENGE=true
+      - TRAEFIK_CERTIFICATESRESOLVERS_WEB_ACME_HTTPCHALLENGE_ENTRYPOINT=http
+      - TRAEFIK_CERTIFICATESRESOLVERS_WEB_ACME_STORAGE=/letsencrypt/acme.json
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - traefik-letsencrypt:/letsencrypt:rw
+    labels:
+      - traefik.enable=true
+      - traefik.http.middlewares.traefik-auth.basicauth.users=root:{SHA}${TRAEFIK_PASSWORD:-fEqNCco3Yq9h5ZUglD3CZJT4lBs=}
+      - traefik.http.services.traefik.loadbalancer.server.port=8080
+      - traefik.http.routers.traefik.rule=Host(`${TRAEFIK_HOST:-traefik}`)
+      - traefik.http.routers.traefik.entrypoints=http
+      - traefik.http.routers.traefik.middlewares=traefik-auth@docker
+    expose:
+      - 80/tcp
+      - 443/tcp
+      - 8080/tcp
+    ports:
+      - 80:80/tcp
+      - 443:443/tcp
+
+volumes:
+  traefik-letsencrypt:
+    driver: local
