@@ -40,3 +40,20 @@ services:
       - /etc/localtime:/etc/localtime:ro
     ports:
       - 8081/tcp
+
+  spark-submit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: spark-submit
+    hostname: spark-submit
+    container_name: spark-submit
+    network_mode: custom
+    tty: true
+    depends_on:
+      - spark-master
+    environment:
+      - SPARK_MASTER=spark://spark-master:7077
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /srv/spark-script:/srv/spark-script:rw
