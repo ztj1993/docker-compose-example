@@ -13,24 +13,10 @@ services:
       - 8080/tcp
       - 7077/tcp
 
-  spark-worker-1:
+  spark-worker:
     image: bde2020/spark-worker:2.4.5-hadoop2.7
-    hostname: spark-worker-1
-    container_name: spark-worker-1
-    network_mode: custom
-    depends_on:
-      - spark-master
-    environment:
-      - SPARK_MASTER=spark://spark-master:7077
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-    ports:
-      - 8081/tcp
-
-  spark-worker-2:
-    image: bde2020/spark-worker:2.4.5-hadoop2.7
-    hostname: spark-worker-2
-    container_name: spark-worker-2
+    hostname: spark-worker
+    container_name: spark-worker
     network_mode: custom
     depends_on:
       - spark-master
