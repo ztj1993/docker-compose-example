@@ -1,0 +1,22 @@
+version: "3"
+services:
+
+  mosquitto:
+    image: eclipse-mosquitto:1.6.10
+    hostname: mosquitto
+    container_name: mosquitto
+    network_mode: custom
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - mosquitto-data:/mosquitto/data:rw
+      - mosquitto-log:/mosquitto/log:rw
+    expose:
+      - 1883/tcp
+    ports:
+      - 1883/tcp
+
+volumes:
+  mosquitto-data:
+    driver: local
+  mosquitto-log:
+    driver: local
