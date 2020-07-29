@@ -1,0 +1,23 @@
+version: "3"
+services:
+
+  mongo:
+    image: mongo:4.2
+    hostname: ${MONGO_HOSTNAME:-mongo}
+    container_name: ${MONGO_CONTAINER_NAME:-mongo}
+    network_mode: custom
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD:-123456}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - mongo:/data/db:rw
+    expose:
+      - 27017/tcp
+    ports:
+      - 27017/tcp
+
+volumes:
+  mongo:
+    driver: local
