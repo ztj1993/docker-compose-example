@@ -1,13 +1,13 @@
-# MySQL
+# Mongo
 
 ### Environment
 ````
-export MYSQL_HOSTNAME=mysql
-export MYSQL_CONTAINER_NAME=mysql
-export MYSQL_ROOT_PASSWORD=123456
+export MONGO_HOSTNAME=mongo
+export MONGO_CONTAINER_NAME=mongo
+export MONGO_ROOT_PASSWORD=123456
 
-docker-compose -p core up -d mysql
+docker-compose -p core up -d mongo
 ````
 
 ### Reference
-- https://hub.docker.com/_/mysql
+- https://hub.docker.com/_/mongo
