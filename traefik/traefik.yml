@@ -31,7 +31,7 @@ services:
       - traefik-letsencrypt:/letsencrypt:rw
     labels:
       - traefik.enable=true
-      - traefik.http.middlewares.traefik-auth.basicauth.users=root:{SHA}${TRAEFIK_PASSWORD:-fEqNCco3Yq9h5ZUglD3CZJT4lBs=}
+      - traefik.http.middlewares.traefik-auth.basicauth.users=admin:{SHA}${TRAEFIK_PASSWORD:-fEqNCco3Yq9h5ZUglD3CZJT4lBs=}
       - traefik.http.services.traefik.loadbalancer.server.port=8080
       - traefik.http.routers.traefik.rule=Host(`${TRAEFIK_HOST:-traefik}`)
       - traefik.http.routers.traefik.entrypoints=http
