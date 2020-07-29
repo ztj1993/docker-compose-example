@@ -1,0 +1,20 @@
+version: "3"
+services:
+
+  adminer:
+    image: adminer
+    hostname: adminer
+    container_name: adminer
+    network_mode: custom
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    expose:
+      - 8080/tcp
+    ports:
+      - 8080/tcp
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.adminer.loadbalancer.server.port=8080
+      - traefik.http.routers.adminer.rule=Host(`${ADMINER_HOST:-adminer}`)
+      - traefik.http.routers.adminer.entrypoints=http
