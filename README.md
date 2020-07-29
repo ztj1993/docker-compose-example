@@ -1,33 +1,16 @@
 # Docker 应用示例
+
+### 项目说明
+用于 Docker 单机版的一些应用示例。
+
+### 克隆代码
 ```
 git clone https://github.com/ztj1993/docker-example.git
 ```
 
-### mysql
-MySQL
-````
-cd mysql
+### 部署之前
+项目要求有一个名字为 `custom` 的网络，建议执行下面的代码创建网络。
 
-export MYSQL_HOSTNAME=mysql
-export MYSQL_CONTAINER_NAME=mysql
-export MYSQL_ROOT_PASSWORD=123456
-
-docker-compose -p core up -d mysql
-````
-
-### mysql-user-db
-MySQL User Password Database
 ```
-cd mysql-user-db
-
-export MYSQL_HOST=mysql
-export MYSQL_USER=root
-export MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD:-123456}
-
-export NEW_DB_USER=new_user
-export NEW_DB_PASSWORD=123456
-export NEW_DB_NAME=new_user_test
-
-docker-compose up
-docker-compose down
+docker network create --subnet=172.25.0.0/16 custom
 ```
