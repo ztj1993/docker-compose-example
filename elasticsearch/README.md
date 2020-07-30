@@ -2,11 +2,11 @@
 
 ### Environment
 ````
-export ES_VERSION=7.8.0
-export MYSQL_HOSTNAME=es
-export MYSQL_CONTAINER_NAME=es
+export ELASTICSEARCH_VERSION=7.8.0
+export MYSQL_HOSTNAME=elasticsearch
+export MYSQL_CONTAINER_NAME=elasticsearch
 
-docker-compose -p core up -d es
+docker-compose -p core up -d elasticsearch
 ````
 
 ### Reference

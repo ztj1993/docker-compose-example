@@ -1,17 +1,17 @@
 version: "3"
 services:
 
-  es:
-    image: elasticsearch:${ES_VERSION:-7.8.0}
-    hostname: ${ES_HOSTNAME:-es}
-    container_name: ${ES_CONTAINER_NAME:-es}
+  elasticsearch:
+    image: elasticsearch:${ELASTICSEARCH_VERSION:-7.8.0}
+    hostname: ${ELASTICSEARCH_HOSTNAME:-elasticsearch}
+    container_name: ${ELASTICSEARCH_CONTAINER_NAME:-elasticsearch}
     network_mode: custom
     environment:
       - discovery.type=single-node
       - bootstrap.memory_lock=true
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - es:/usr/share/elasticsearch/data:rw
+      - elasticsearch:/usr/share/elasticsearch/data:rw
     expose:
       - 9200/tcp
       - 9300/tcp
@@ -20,5 +20,5 @@ services:
       - 9300/tcp
 
 volumes:
-  es:
+  elasticsearch:
     driver: local
