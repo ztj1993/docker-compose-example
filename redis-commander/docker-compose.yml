@@ -12,8 +12,6 @@ services:
       - HTTP_PASSWORD=${REDIS_COMMANDER_PASSWORD:-123456}
     expose:
       - 8081/tcp
-    ports:
-      - 8081/tcp
     labels:
       - traefik.enable=true
       - traefik.http.services.redis-commander.loadbalancer.server.port=8081

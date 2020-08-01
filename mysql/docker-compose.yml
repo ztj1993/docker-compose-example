@@ -21,9 +21,6 @@ services:
     expose:
       - 3306/tcp
       - 33060/tcp
-    ports:
-      - 3306/tcp
-      - 33060/tcp
 
 volumes:
   mysql:

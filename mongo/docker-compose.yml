@@ -15,8 +15,6 @@ services:
       - mongo:/data/db:rw
     expose:
       - 27017/tcp
-    ports:
-      - 27017/tcp
 
 volumes:
   mongo:

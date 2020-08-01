@@ -9,7 +9,7 @@ services:
       - INIT_DAEMON_STEP=setup_spark
     volumes:
       - /etc/localtime:/etc/localtime:ro
-    ports:
+    expose:
       - 8080/tcp
       - 7077/tcp
 
@@ -24,7 +24,7 @@ services:
       - SPARK_MASTER=spark://spark-master:7077
     volumes:
       - /etc/localtime:/etc/localtime:ro
-    ports:
+    expose:
       - 8081/tcp
 
   spark-submit:
