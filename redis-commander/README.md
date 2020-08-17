@@ -1,6 +1,6 @@
 # RedisCommander
 
-### Environment
+### Run
 ````
 docker-compose -p manage up -d redis-commander
 ````

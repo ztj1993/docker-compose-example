@@ -1,8 +1,8 @@
 # Mosquitto
 
-### Environment
+### Run
 ````
-docker-compose -p manage up -d mosquitto
+docker-compose -p core up -d mosquitto
 ````
 
 ### Reference

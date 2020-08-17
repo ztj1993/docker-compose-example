@@ -1,6 +1,6 @@
 # Adminer
 
-### Environment
+### Run
 ````
 docker-compose -p manage up -d adminer
 ````

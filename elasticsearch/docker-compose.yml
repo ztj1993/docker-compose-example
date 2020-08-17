@@ -2,9 +2,9 @@ version: "3"
 services:
 
   elasticsearch:
-    image: elasticsearch:${ELASTICSEARCH_VERSION:-7.8.0}
-    hostname: ${ELASTICSEARCH_HOSTNAME:-elasticsearch}
-    container_name: ${ELASTICSEARCH_CONTAINER_NAME:-elasticsearch}
+    image: elasticsearch:7.8.0
+    hostname: elasticsearch
+    container_name: elasticsearch
     network_mode: custom
     environment:
       - discovery.type=single-node

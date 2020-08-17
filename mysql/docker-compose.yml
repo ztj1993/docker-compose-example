@@ -9,12 +9,11 @@ services:
       --log-bin=mysql-bin
       --binlog-format=ROW
       --server_id=1
-    hostname: ${MYSQL_HOSTNAME:-mysql}
-    container_name: ${MYSQL_CONTAINER_NAME:-mysql}
+    hostname: mysql
+    container_name: mysql
     network_mode: custom
-    restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-123456}
+      - MYSQL_ROOT_PASSWORD=123456
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - mysql:/var/lib/mysql:rw
