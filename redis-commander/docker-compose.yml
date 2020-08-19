@@ -12,3 +12,5 @@ services:
       - HTTP_PASSWORD=123456
     expose:
       - 8081/tcp
+    ports:
+      - 8081/tcp

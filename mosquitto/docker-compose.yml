@@ -12,6 +12,8 @@ services:
       - mosquitto-log:/mosquitto/log:rw
     expose:
       - 1883/tcp
+    ports:
+      - 1883/tcp
 
 volumes:
   mosquitto-data:

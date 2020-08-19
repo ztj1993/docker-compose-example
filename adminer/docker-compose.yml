@@ -10,3 +10,5 @@ services:
       - /etc/localtime:/etc/localtime:ro
     expose:
       - 8080/tcp
+    ports:
+      - 8080/tcp

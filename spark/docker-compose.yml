@@ -12,6 +12,9 @@ services:
     expose:
       - 8080/tcp
       - 7077/tcp
+    ports:
+      - 8080/tcp
+      - 7077/tcp
 
   spark-worker:
     image: bde2020/spark-worker:2.4.5-hadoop2.7

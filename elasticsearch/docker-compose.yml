@@ -15,6 +15,9 @@ services:
     expose:
       - 9200/tcp
       - 9300/tcp
+    ports:
+      - 9200/tcp
+      - 9300/tcp
 
 volumes:
   elasticsearch:
