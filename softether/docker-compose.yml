@@ -1,0 +1,17 @@
+version: "3"
+services:
+
+  softether:
+    image: siomiz/softethervpn:alpine
+    hostname: softether
+    container_name: softether
+    network_mode: custom
+    privileged: true
+    restart: always
+    environment:
+      - PSK=123456
+      - USERS=vpn:123456
+      - SPW=123456
+      - HPW=123456
+    ports:
+      - 5555:5555/tcp
