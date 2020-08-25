@@ -2,7 +2,8 @@
 
 ### Run
 ````
-docker-compose -p core up -d mysql
+cp env.example .env
+docker-compose up
 ````
 
 ### Reference

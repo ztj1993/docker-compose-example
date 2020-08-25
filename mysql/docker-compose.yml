@@ -2,28 +2,22 @@ version: "3"
 services:
 
   mysql:
-    image: mysql:5.7
+    env_file: .env
+    image: mysql:${MYSQL_VERSION}
     command: >
       mysqld
       --default-authentication-plugin=mysql_native_password
       --log-bin=mysql-bin
       --binlog-format=ROW
       --server_id=1
-    hostname: mysql
-    container_name: mysql
-    network_mode: custom
+    hostname: ${MYSQL_HOSTNAME}
+    container_name: ${MYSQL_CONTAINER_NAME}
+    network_mode: ${MYSQL_NETWORK_MODE}
     environment:
-      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - mysql:/var/lib/mysql:rw
+      - ./mysql/data:/var/lib/mysql:rw
     expose:
       - 3306/tcp
       - 33060/tcp
-    ports:
-      - 3306/tcp
-      - 33060/tcp
-
-volumes:
-  mysql:
-    driver: local
