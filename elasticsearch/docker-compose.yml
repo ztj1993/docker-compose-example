@@ -9,6 +9,9 @@ services:
     environment:
       - discovery.type=single-node
       - bootstrap.memory_lock=true
+      - http.cors.enabled=true
+      - http.cors.allow-origin=*
+      - http.cors.allow-credentials=true
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - elasticsearch:/usr/share/elasticsearch/data:rw
