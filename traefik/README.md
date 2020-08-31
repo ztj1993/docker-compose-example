@@ -2,7 +2,7 @@
 
 ### Environment
 ````
-docker-compose -p core up -d traefik
+docker-compose up
 ````
 
 ### Reference
